@@ -14,7 +14,7 @@ public class Vasquez_Alexander_ProyectoTienda {
 
     public static void main(String[] args) {
         Scanner lea = new Scanner(System.in);
-
+//rponad
         // precio de compra y venta de los producto
         // azucar
         String descripcionAzucar = "Azucar";
