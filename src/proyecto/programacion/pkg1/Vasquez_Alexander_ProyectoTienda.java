@@ -15,6 +15,8 @@ public class Vasquez_Alexander_ProyectoTienda {
     public static void main(String[] args) {
         Scanner lea = new Scanner(System.in);
         
+        int opcion = 0;
+        
         // precio de compra y venta de los producto
         // azucar
         String descripcionAzucar = "Azucar";
@@ -36,25 +38,20 @@ public class Vasquez_Alexander_ProyectoTienda {
         double precioVentaMaiz = 20;
         double precioCompraMaiz = 18;
 
-        // las variables para el estado del sistema
+        // mas variables
         double efectivoEnCaja = 0;
         boolean cajaAbierta = false;
         boolean sistemaCerrado = false;
-
-        // contadores para reportes
-        int numeroVentas = 0;
+        int numeroVentas = 0; //para opcion de reportes
         int numeroCompras = 0;
         double volumenTotalVentas = 0;
         double volumenTotalCompras = 0;
         double mayorGananciaVenta = 0;
-        double mayorGastoCompra = 0;
-
-        // contadores para el producto estrella     
-        double cantidadVendidaAzucar = 0;
+        double mayorGastoCompra = 0;   
+        double cantidadVendidaAzucar = 0;//producto estrella
         double cantidadVendidaAvena = 0;
         double cantidadVendidaTrigo = 0;
         double cantidadVendidaMaiz = 0;
-
         int codigoProducto = 0;
         double subtotalVenta = 0;
         double kilos = 0;
@@ -62,15 +59,14 @@ public class Vasquez_Alexander_ProyectoTienda {
         // Variable para acumular los detalles de la venta en la factura de ventas
         String detallesVenta = "";
 
-        boolean primeraVez = true; //esta variable es para controlar si es la primera vez que se abre el programa
+        boolean primeraVez = true; 
 
-        // inicio del sistema
+        //inicio
         System.out.println("====================================");
         System.out.println("****SISTEMA DE CAJA REGISTRADORA****");
         System.out.println("====================================");
         System.out.println("\nLa tienda comienza el dia con Lps. 0.00");
 
-        int opcion = 0;
         while (true) {
             System.out.println("\n\n==========================");
             System.out.println(" =---=MENU PRINCIPAL=---="); //menu principal
@@ -96,13 +92,13 @@ public class Vasquez_Alexander_ProyectoTienda {
                     mayorGastoCompra = 0;
                     cantidadVendidaAzucar = 0;
                     cantidadVendidaAvena = 0;
-                    cantidadVendidaTrigo = 0;
+                    cantidadVendidaTrigo = 0;       
                     cantidadVendidaMaiz = 0;
                     sistemaCerrado = false;
                     cajaAbierta = true;
                     System.out.println("\nCaja abierta con Lps. " + efectivoEnCaja);
                 } else if (primeraVez || !sistemaCerrado) {
-                    double cantidad = -1;
+                    double cantidad = 0;
                     while (true) {
                         System.out.print("\nIngrese la cantidad de efectivo (en numeros) a agregar a la caja: Lps. ");
                         cantidad = lea.nextDouble();
@@ -126,13 +122,13 @@ public class Vasquez_Alexander_ProyectoTienda {
                 if (cajaAbierta && !sistemaCerrado) {
                     boolean continuarComprando = true;
                     char tipoCliente = ' ';
-                    subtotalVenta = 0; // Reiniciar datos
+                    subtotalVenta = 0; // einiciar datos
                     detallesVenta = "";
 
                     while (continuarComprando) {
                         if (tipoCliente == ' ') { // preguntamos
                             System.out.print("Ingrese el tipo de cliente (A, B o C): ");
-                            tipoCliente = lea.next().toUpperCase().charAt(0); // uso charAt por si pone mas de un caracter
+                            tipoCliente = lea.next().toUpperCase().charAt(0); // uso charAt por si pone mas de un caracter, solo toma el primero
                         }
 
                         if (tipoCliente != 'A' && tipoCliente != 'B' && tipoCliente != 'C') {
@@ -329,17 +325,17 @@ public class Vasquez_Alexander_ProyectoTienda {
                         }
                     }
 
-                    boolean puedeSuplir = false;
+                    boolean provee = false;
 
                     if (tipoProveedor == 'A') {
-                        puedeSuplir = (codigoProducto == 1 || codigoProducto == 4);
+                        provee = (codigoProducto == 1 || codigoProducto == 4);
                     } else if (tipoProveedor == 'B') {
-                        puedeSuplir = (codigoProducto == 2 || codigoProducto == 3);
+                        provee = (codigoProducto == 2 || codigoProducto == 3);
                     } else if (tipoProveedor == 'C') {
-                        puedeSuplir = (codigoProducto == 2);
+                        provee = (codigoProducto == 2);
                     }
 
-                    if (!puedeSuplir) {
+                    if (!provee) {
                         System.out.println("El proveedor no vende este producto");
                     } else {
                         String descripcionProducto = "";
@@ -413,7 +409,6 @@ public class Vasquez_Alexander_ProyectoTienda {
                     continue;
                 }
 
-                // Realizar calculos antes de imprimir
                 double margenGanancia = volumenTotalVentas - volumenTotalCompras;
                 double promedioCompra;
 
@@ -512,3 +507,4 @@ public class Vasquez_Alexander_ProyectoTienda {
         System.out.println("fin del sistema");
     }
 }
+`
