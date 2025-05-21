@@ -507,4 +507,3 @@ public class Vasquez_Alexander_ProyectoTienda {
         System.out.println("fin del sistema");
     }
 }
-`
